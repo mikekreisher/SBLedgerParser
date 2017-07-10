@@ -1,6 +1,8 @@
 require "optparse"
 require "json"
 
+#http://www.swagbucks.com/?cmd=sb-acct-ledger&allTime=true
+
 activity_codes = { 
 	0 => "Registration",
 	1 => "Searching the Web",
