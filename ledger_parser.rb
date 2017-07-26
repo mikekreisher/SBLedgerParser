@@ -94,6 +94,7 @@ end
 
 earnings = []
 spendings = []
+spend_codes = [6, 11]
 amount_earned = 0
 amount_spent = 0
 i = 0
@@ -102,7 +103,7 @@ until i >= my_data.length
   if my_data[i][1].to_i <= options[:end_date].to_i
     entry_date = my_data[i][1].to_s.gsub(/(\d{4})(\d{2})(\d{2})/, '\1-\2-\3')
     entry = "#{entry_date}\t#{activity_codes[my_data[i][0]]}\t#{my_data[i][5]}\t#{my_data[i][3]}"
-    if my_data[i][0] == 6
+    if spend_codes.include?(my_data[i][0])
       spendings << entry
       amount_spent += my_data[i][3]
     else
@@ -111,8 +112,9 @@ until i >= my_data.length
     end
 
   end
-  i += 1
   break if my_data[i][1].to_i < options[:start_date].to_i
+
+  i += 1
 
 end
 
